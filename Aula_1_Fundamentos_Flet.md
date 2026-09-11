@@ -44,7 +44,13 @@ pip install "flet[all]"
 
 ```python
 
-# Fazer código com Professor
+import flet as ft
+
+def main(page: ft.page):
+    page.title = "Meu primeiro app flet"
+    page.add(ft.Text("Olá, mundo!"))
+
+ft.run(main)
 
 
 ```
@@ -61,10 +67,46 @@ Crie um app que mostre, na janela, seu nome (texto grande) e uma frase curta sob
 
 ```python
 
+import flet as ft
 
-# Fazer código com Professor
+def main(page: ft.Page):
+    # Título que aparece na barra da janela/aba
+    page.title = "Cartão de apresentação"
 
+    # Define o tamanho da janela (largura e altura em pixels)
+    page.window.width = 320
+    page.window.height = 600
 
+    # Cor de fundo da página: roxo escuro
+    page.bgcolor = "#2B1B3D"
+
+    # Centraliza os controles no eixo horizontal da página
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+
+    # Padding vertical de 60px (topo e base)
+    page.padding = ft.Padding(top=60, bottom=60, left=0, right=0)
+
+    # Adiciona os elementos visuais à página
+    page.add(
+        # Nome em destaque: tamanho maior, negrito e cor rosa clara
+        ft.Text(
+            "Sabrina Carpenter",
+            size=28,
+            weight=ft.FontWeight.BOLD,
+            color="#FF6FB5",
+            text_align=ft.TextAlign.CENTER,  # centraliza o texto internamente
+        ),
+        # Subtítulo/descrição: tamanho menor, cor lilás suave
+        ft.Text(
+            "Estudante de programação mobile",
+            size=14,
+            color="#D9C4E8",
+            text_align=ft.TextAlign.CENTER,  # centraliza o texto internamente
+        ),
+    )
+
+# Inicia a aplicação, chamando a função main() como ponto de entrada
+ft.run(main)
 
 ```
 
@@ -91,8 +133,61 @@ Propriedades comuns de `Container`: `width`, `height`, `padding`, `margin`, `bgc
 ```python
 
 
-# Fazer código com Professor
+import flet as ft
 
+def main(page: ft.Page):
+    page.title = "Árvore de controles"
+
+    # Define o tamanho da janela
+    page.window.width = 320
+    page.window.height = 600
+
+    # Cor de fundo da página: verde-azulado 
+    page.bgcolor = "#16bA4A"
+
+    # Centralizar elementos
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
+
+    # Padding
+    page.padding = ft.Padding(top=60, bottom=60, left=0, right=0)
+
+    # Container principal que representa o cartão visual
+    cartao = ft.Container(
+        # conteúdo do cartão organizado em coluna
+        content=ft.Column(
+            horizontal_alignment = ft.CrossAxisAlignment.CENTER,
+            controls=[
+                # título do cartão
+                ft.Text(
+                        "Título do cartão",
+                        size=20,
+                        weight=ft.FontWeight.BOLD,
+                        color="#E26FFF",
+                ),
+                # texto descritivo
+                ft.Text("Descrição do cartão", color="#CFEFE9"),
+
+                ft.Row(
+                    alignment=ft.MainAxisAlignment.CENTER,
+                    controls=[
+                        ft.ElevatedButton(
+                            "Ação 1",
+                            bgcolor="#1FE0C4",
+                            color="#0B3D3A"
+                        ), # Botão de destaque
+                        ft.OutlinedButton("Ação 2") # Segundo botão
+                    ]
+                ),
+            ]
+        ),
+    padding=16,
+    bgcolor="#123C3C",
+    border_radius=12,
+    )
+    # Adiciona o cartão à página
+    page.add(cartao)
+
+ft.run(main)
 
 
 ```
